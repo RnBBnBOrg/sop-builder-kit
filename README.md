@@ -8,8 +8,8 @@ The SOP Builder Kit gives you ready-to-use templates and AI prompts that turn yo
 
 ## What's Inside
 
-### SOP Templates (Notion-Ready)
-Five battle-tested templates you can import directly into Notion (or use as markdown):
+### Interactive SOP Templates
+Five battle-tested HTML templates that work directly in your browser — fill in fields, check boxes, and your work saves automatically:
 
 | Template | What It Covers |
 |----------|---------------|
@@ -47,7 +47,7 @@ Step-by-step instructions to go from download to documented in one sitting.
 1. **Pick a template** — start with the process that causes the most pain
 2. **Run the AI prompts** — paste the SOP Generator prompt into ChatGPT, Claude, or any AI tool with your rough notes
 3. **Customize** — use the Industry Customizer prompts to tailor it to your business
-4. **Import to Notion** — follow the Quick-Start Guide to set up your SOP library
+4. **Fill in the template** — open it in your browser, fill in the fields, and your work saves automatically
 5. **Audit & improve** — run the Process Auditor prompts quarterly to keep SOPs current
 
 ---
@@ -56,18 +56,19 @@ Step-by-step instructions to go from download to documented in one sitting.
 
 ```
 sop-builder-kit/
-├── templates/                    # Ready-to-use SOP templates
-│   ├── 01-general-sop.md
-│   ├── 02-client-onboarding.md
-│   ├── 03-employee-onboarding.md
-│   ├── 04-content-publishing.md
-│   └── 05-quality-assurance.md
+├── templates/                    # Interactive HTML templates
+│   ├── 01-general-sop.html
+│   ├── 02-client-onboarding.html
+│   ├── 03-employee-onboarding.html
+│   ├── 04-content-publishing.html
+│   └── 05-quality-assurance.html
 ├── prompts/                      # AI prompt packs
-│   ├── sop-generator.md
-│   ├── process-auditor.md
-│   └── industry-customizer.md
+│   ├── sop-generator.html
+│   ├── process-auditor.html
+│   └── industry-customizer.html
 ├── guides/
-│   └── quick-start.md            # Setup & usage guide
+│   └── quick-start.html          # Setup & usage guide
+├── START-HERE.html               # Landing page — open this first
 ├── landing-page/                 # Product sales page
 │   ├── index.html
 │   └── styles.css

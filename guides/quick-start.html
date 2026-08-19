@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick-Start Guide — SOP Builder Kit</title>
+  <style>
+:root {
+  --ink: #141821; --ground: #faf9f7; --paper: #fff; --steel: #3d5a80; --coral: #d96b4e;
+  --text: #1d1f24; --text-muted: #5a5d63; --border: #d6d3cc; --code-bg: #f0efeb;
+  --quote-border: #d96b4e; --quote-bg: #fdf6f3;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8; --ground: #111520; --paper: #1a1f2e; --steel: #7ba4d4; --coral: #e0845f;
+    --text: #dddbd7; --text-muted: #8a8d94; --border: #2a2f3d; --code-bg: #161b28;
+    --quote-border: #e0845f; --quote-bg: #1e1a17;
+  }
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text); background: var(--ground); line-height: 1.7; -webkit-font-smoothing: antialiased; max-width: var(--max-w); margin: 0 auto; padding: 48px 28px 80px; }
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul, ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+em { font-style: italic; }
+a { color: var(--steel); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--coral); }
+blockquote { border-left: 3px solid var(--quote-border); background: var(--quote-bg); padding: 16px 20px; margin: 0 0 20px; border-radius: 0 4px 4px 0; font-size: 0.92rem; }
+blockquote p:last-child { margin-bottom: 0; }
+pre { background: var(--code-bg); padding: 20px 24px; border-radius: 4px; overflow-x: auto; margin: 0 0 20px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--code-bg); padding: 2px 6px; border-radius: 3px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.5; }
+thead th { text-align: left; font-weight: 700; padding: 10px 14px; border-bottom: 2px solid var(--steel); white-space: nowrap; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--code-bg); }
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+@media print { body { background: #fff; color: #000; max-width: none; padding: 0; } a { color: #000; } pre { background: #f5f5f5; } .product-header { border-bottom-color: #000; } }
+@media (max-width: 480px) { body { padding: 24px 16px 48px; } h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } pre { padding: 16px; font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>Quick-Start Guide</h1>
+  </div>
+
+  <p>You're 60 minutes away from your first professional SOP. This guide walks you through the fastest path from "I have no documentation" to "I have a real SOP I actually use."</p>
+
+  <hr>
+
+  <h2>Step 1: Pick Your First SOP (5 minutes)</h2>
+
+  <p>Don't start with the most important process — start with the most <strong>painful</strong> one. Use this priority framework:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Priority</th><th>When to pick this process</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Start here</strong></td><td>You've explained this process more than 3 times</td><td>How to onboard a new client</td></tr>
+        <tr><td><strong>High</strong></td><td>Mistakes here cost you real money or clients</td><td>Quality review before delivery</td></tr>
+        <tr><td><strong>Medium</strong></td><td>This process changes depending on who does it</td><td>Content publishing workflow</td></tr>
+        <tr><td><strong>Lower</strong></td><td>Nice to have documented, but not hurting you yet</td><td>Internal meeting notes format</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>Step 2: Choose Your Template (2 minutes)</h2>
+
+  <p>Match the process to the right template:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Template</th><th>Best for</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><a href="../templates/01-general-sop.html">General SOP</a></td><td>Any process that follows a linear flow</td><td>Client onboarding, employee setup, monthly close</td></tr>
+        <tr><td><a href="../templates/02-client-onboarding.html">Client Onboarding</a></td><td>Bringing new clients from signed contract to active</td><td>Agency onboarding, consulting kickoff, service activation</td></tr>
+        <tr><td><a href="../templates/03-project-delivery.html">Project Delivery</a></td><td>Managing a project from start to handoff</td><td>Website build, campaign launch, product release</td></tr>
+        <tr><td><a href="../templates/04-content-publishing.html">Content Publishing</a></td><td>Creating and publishing content of any kind</td><td>Blog posts, social media, email campaigns, reports</td></tr>
+        <tr><td><a href="../templates/05-quality-assurance.html">Quality Assurance</a></td><td>Review and approval processes</td><td>Deliverable review, code review, design QA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    <p><strong>Not sure?</strong> Start with the <a href="../templates/01-general-sop.html">General SOP</a> — it works for almost anything.</p>
+  </blockquote>
+
+  <hr>
+
+  <h2>Step 3: Fill It In (30-45 minutes)</h2>
+
+  <p>You have three options — pick the one that matches your style:</p>
+
+  <h3>Option A: Fill in the Template Directly</h3>
+  <ol>
+    <li>Open your chosen template</li>
+    <li>Fill in each section — the template has placeholders and guidance for every field</li>
+    <li>Your work saves automatically as you type</li>
+    <li>When done, click "Save / Print PDF" to export</li>
+  </ol>
+
+  <h3>Option B: Use AI to Generate a Draft</h3>
+  <ol>
+    <li>Open the <a href="../prompts/sop-generator.html">SOP Generator prompts</a></li>
+    <li>Copy Prompt 1 ("Generate a Complete SOP from Scratch")</li>
+    <li>Paste it into ChatGPT, Claude, or any AI tool</li>
+    <li>Fill in your business details and run the prompt</li>
+    <li>Copy the AI output into your template and edit to match reality</li>
+  </ol>
+
+  <h3>Option C: Convert Existing Notes</h3>
+  <ol>
+    <li>Gather your existing notes, checklists, Slack messages, or brain dumps about the process</li>
+    <li>Open the <a href="../prompts/sop-generator.html">SOP Generator prompts</a></li>
+    <li>Copy Prompt 2 ("Convert Messy Notes into a Clean SOP")</li>
+    <li>Paste your notes and run the prompt</li>
+    <li>Review and refine the output</li>
+  </ol>
+
+  <hr>
+
+  <h2>Step 4: Validate It (10 minutes)</h2>
+
+  <p>Before you call it done:</p>
+
+  <ol>
+    <li><strong>Walk through it mentally.</strong> Read each step and imagine doing it. Does anything feel out of order or missing?</li>
+    <li><strong>Have someone else read it.</strong> If possible, ask a team member to follow it. Where do they get stuck or have questions?</li>
+    <li><strong>Use the Process Auditor.</strong> Copy your finished SOP into <a href="../prompts/process-auditor.html">Process Auditor Prompt 1</a> for an AI-powered review.</li>
+  </ol>
+
+  <hr>
+
+  <h2>Step 5: Put It to Work</h2>
+
+  <h3>Share with Your Team</h3>
+  <ul>
+    <li>Share the HTML file directly — it works offline in any browser, no special software needed</li>
+    <li>Click "Save / Print PDF" to export a clean PDF for email, Google Drive, or your team's document system</li>
+    <li>Each person who opens the file gets their own saved state — entries are stored locally in the browser</li>
+    <li>Set a calendar reminder to review and update quarterly</li>
+  </ul>
+
+  <hr>
+
+  <h2>What to Build Next</h2>
+
+  <p>After your first SOP is done and tested, work through this sequence:</p>
+
+  <ol>
+    <li><strong>Document 2-3 more high-priority processes</strong> using the templates</li>
+    <li><strong>Customize for your industry</strong> using the <a href="../prompts/industry-customizer.html">Industry Customizer prompts</a></li>
+    <li><strong>Set up a review schedule</strong> — even great SOPs go stale. Quarterly reviews keep them useful.</li>
+    <li><strong>Build your SOP library</strong> using Industry Customizer Prompt 8 to plan your full documentation roadmap</li>
+  </ol>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+</body>
+</html>

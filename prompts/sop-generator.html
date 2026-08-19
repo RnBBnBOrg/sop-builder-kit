@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Pack: SOP Generator — SOP Builder Kit</title>
+  <style>
+:root {
+  --ink: #141821; --ground: #faf9f7; --paper: #fff; --steel: #3d5a80; --coral: #d96b4e;
+  --text: #1d1f24; --text-muted: #5a5d63; --border: #d6d3cc; --code-bg: #f0efeb;
+  --quote-border: #d96b4e; --quote-bg: #fdf6f3;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8; --ground: #111520; --paper: #1a1f2e; --steel: #7ba4d4; --coral: #e0845f;
+    --text: #dddbd7; --text-muted: #8a8d94; --border: #2a2f3d; --code-bg: #161b28;
+    --quote-border: #e0845f; --quote-bg: #1e1a17;
+  }
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text); background: var(--ground); line-height: 1.7; -webkit-font-smoothing: antialiased; max-width: var(--max-w); margin: 0 auto; padding: 48px 28px 80px; }
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul, ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+pre { background: var(--code-bg); padding: 20px 24px; border-radius: 4px; overflow-x: auto; margin: 0 0 20px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--code-bg); padding: 2px 6px; border-radius: 3px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+@media print { body { background: #fff; color: #000; max-width: none; padding: 0; } pre { background: #f5f5f5; } .product-header { border-bottom-color: #000; } }
+@media (max-width: 480px) { body { padding: 24px 16px 48px; } h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } pre { padding: 16px; font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>SOP Builder Kit</h1>
+  </div>
+
+  <h2>AI Prompt Pack: SOP Generator</h2>
+
+  <p>Use these prompts to generate complete, ready-to-use SOPs with any AI tool (ChatGPT, Claude, etc.). Copy the prompt, fill in your details, and get a professional SOP in minutes.</p>
+
+  <hr>
+
+  <h3>Prompt 1: Generate a Complete SOP from Scratch</h3>
+
+  <p>Best for creating a new SOP when you know the process but haven't documented it yet.</p>
+
+  <pre><code>I need you to create a complete Standard Operating Procedure (SOP) for my business.
+
+Business context:
+- Business type: [e.g., "marketing agency," "property management company," "e-commerce brand"]
+- Team size: [e.g., "5 people," "just me," "15-person team"]
+- Process to document: [e.g., "client onboarding," "content publishing," "order fulfillment"]
+
+Here's how the process currently works (in plain English):
+[Describe the process step by step as you'd explain it to a new employee. Don't worry about formatting — just explain what happens, in what order, and who does it.]
+
+Create an SOP that includes:
+1. Purpose — why this process exists (1-2 sentences)
+2. Scope — what triggers this process and what it covers
+3. Roles — who's involved and what they're responsible for
+4. Step-by-step procedure — clear, numbered steps with enough detail that someone new could follow them
+5. Quality checkpoints — where to pause and verify before moving forward
+6. Common mistakes and how to avoid them
+7. Metrics to track — how to know if this process is working well
+
+Format it professionally with clear headings. Write it for someone who's smart but has never done this before.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 2: Convert Messy Notes into a Clean SOP</h3>
+
+  <p>Best when you have scattered notes, checklists, or Slack messages about a process that needs organizing.</p>
+
+  <pre><code>I have messy notes about a process that I need turned into a professional SOP. Here are my raw notes:
+
+[Paste your notes, bullet points, Slack messages, checklists, or any documentation you have — messy is fine]
+
+Business context:
+- This process is for: [what team/department]
+- It happens: [how often — daily, weekly, per client, per project, etc.]
+- The person doing this is typically: [role/title]
+
+Turn this into a clean, professional SOP with:
+1. Purpose statement
+2. Clear scope (when this applies, when it doesn't)
+3. Roles and responsibilities
+4. Numbered step-by-step procedure (organize my notes into logical order)
+5. Quality checkpoints
+6. Any warnings or common mistakes you can infer from the notes
+
+Fill in gaps where my notes are incomplete — mark anything you assumed with [ASSUMPTION — verify this]. Keep the tone professional but approachable.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 3: Create SOPs from a Job Description</h3>
+
+  <p>Best when you're hiring for a role and want to document the key processes before the new person starts.</p>
+
+  <pre><code>I'm hiring for this role and I want to create SOPs for their core responsibilities before they start.
+
+Here's the job description:
+[Paste the job description]
+
+Create SOPs for the top [3-5] most important processes this person will handle. For each SOP, include:
+1. Purpose
+2. Step-by-step procedure
+3. Quality standards — what "done well" looks like
+4. Common mistakes to avoid
+5. Who to ask for help
+
+Keep each SOP to one page. These are for a new hire who's competent but unfamiliar with how we do things specifically.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 4: Generate an SOP from a Recorded Process</h3>
+
+  <p>Best when you have a Loom transcript, meeting recording, or video walkthrough of someone doing the process.</p>
+
+  <pre><code>I have a transcript of someone walking through a business process. I need you to convert it into a clean, professional SOP.
+
+Here is the transcript:
+[Paste the transcript or detailed summary of the recording]
+
+Context:
+- Process name: [what this process is called]
+- Who recorded it: [their role]
+- Audience: [who will follow this SOP]
+
+Convert this into a structured SOP with:
+1. Purpose
+2. Required tools/access/accounts needed before starting
+3. Step-by-step procedure (extract the actual steps from the conversational transcript)
+4. Screenshots or visual markers — note where a screenshot would be helpful with [SCREENSHOT: description of what to capture]
+5. Quality check — how to verify the process was done correctly
+6. Troubleshooting — note any issues or edge cases mentioned in the recording
+
+Remove all conversational filler, tangents, and "um"s. Keep only the actionable content.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 5: Build an Emergency / Escalation SOP</h3>
+
+  <p>Best for documenting what to do when things go wrong — outages, complaints, security incidents.</p>
+
+  <pre><code>I need an emergency/escalation SOP for my business.
+
+Business type: [e.g., "SaaS company," "rental property management," "consulting firm"]
+Scenario to document: [e.g., "website goes down," "client escalation," "data breach," "negative review goes viral," "key employee quits mid-project"]
+
+Create an SOP that covers:
+1. How to identify and classify the severity of this situation (levels 1-3)
+2. Immediate response — what to do in the first 15 minutes for each severity level
+3. Communication plan — who to notify, in what order, what to say
+4. Resolution steps — how to fix or contain the situation
+5. Follow-up — what to do after the crisis is resolved (post-mortem, client communication, prevention)
+6. Contact list template — who to call for what
+
+Include specific message templates for communicating with:
+- Affected clients/customers
+- Internal team
+- Vendors/partners (if relevant)
+
+Write it so someone could follow this under pressure at 2am without needing to think too hard.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 6: Create a Training SOP for Delegating a Task</h3>
+
+  <p>Best when you currently do something yourself and want to hand it off to someone else.</p>
+
+  <pre><code>I currently handle [task/process] myself and I want to delegate it. I need an SOP that's detailed enough for someone to take over completely.
+
+Here's what I do:
+[Describe the task in your own words — include the tools you use, how you make decisions, what "good" looks like, and any shortcuts or tricks you've developed]
+
+The person taking over:
+- Role: [e.g., "VA," "new hire," "team member"]
+- Experience level: [e.g., "beginner," "knows the tools but not our process," "experienced but new to our company"]
+- Access needed: [list any accounts, tools, or permissions they'll need]
+
+Create an SOP that:
+1. Explains the purpose — why we do this and why it matters
+2. Lists prerequisites — tools, access, and knowledge needed
+3. Walks through the process step by step (assume no prior knowledge of our way of doing things)
+4. Includes decision trees for common judgment calls (if X, then do Y)
+5. Defines quality standards — what to check before marking it done
+6. Lists common mistakes and how to recover from them
+7. Specifies when to ask for help vs. make a judgment call
+
+Add a "first week" checklist: a simplified version for the first few times they do it, with extra checkpoints.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 7: Generate a Recurring Process SOP (Daily/Weekly/Monthly)</h3>
+
+  <p>Best for documenting processes that happen on a regular schedule.</p>
+
+  <pre><code>I need an SOP for a recurring process in my business.
+
+Process: [e.g., "weekly client reporting," "daily social media posting," "monthly bookkeeping close"]
+Frequency: [daily / weekly / bi-weekly / monthly / quarterly]
+Who does it: [role/title]
+Tools used: [list software, platforms, spreadsheets, etc.]
+
+Here's what the process involves:
+[Describe what gets done each cycle]
+
+Create an SOP that includes:
+1. Purpose — why this recurs and what depends on it
+2. Schedule — when it starts, when it's due, any dependencies on other processes
+3. Pre-work checklist — what to gather/verify before starting
+4. Step-by-step procedure for each cycle
+5. Quality check — how to verify this cycle's work before moving on
+6. Handoff — who gets the output and in what format
+7. Exception handling — what to do when you miss a cycle, data is late, or something breaks
+
+Include a one-line calendar reminder I can copy-paste for scheduling this.</code></pre>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+</body>
+</html>

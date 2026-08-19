@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Pack: Process Auditor — SOP Builder Kit</title>
+  <style>
+:root {
+  --ink: #141821; --ground: #faf9f7; --paper: #fff; --steel: #3d5a80; --coral: #d96b4e;
+  --text: #1d1f24; --text-muted: #5a5d63; --border: #d6d3cc; --code-bg: #f0efeb;
+  --quote-border: #d96b4e; --quote-bg: #fdf6f3;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8; --ground: #111520; --paper: #1a1f2e; --steel: #7ba4d4; --coral: #e0845f;
+    --text: #dddbd7; --text-muted: #8a8d94; --border: #2a2f3d; --code-bg: #161b28;
+    --quote-border: #e0845f; --quote-bg: #1e1a17;
+  }
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text); background: var(--ground); line-height: 1.7; -webkit-font-smoothing: antialiased; max-width: var(--max-w); margin: 0 auto; padding: 48px 28px 80px; }
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul, ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+pre { background: var(--code-bg); padding: 20px 24px; border-radius: 4px; overflow-x: auto; margin: 0 0 20px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--code-bg); padding: 2px 6px; border-radius: 3px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+@media print { body { background: #fff; color: #000; max-width: none; padding: 0; } pre { background: #f5f5f5; } .product-header { border-bottom-color: #000; } }
+@media (max-width: 480px) { body { padding: 24px 16px 48px; } h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } pre { padding: 16px; font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>SOP Builder Kit</h1>
+  </div>
+
+  <h2>AI Prompt Pack: Process Auditor</h2>
+
+  <p>Use these prompts to review, improve, and stress-test your existing SOPs. Paste your current SOP into the prompt and get actionable feedback.</p>
+
+  <hr>
+
+  <h3>Prompt 1: Full SOP Audit</h3>
+
+  <p>Best for a comprehensive review of an existing SOP. Identifies gaps, ambiguity, and improvement opportunities.</p>
+
+  <pre><code>I need you to audit this Standard Operating Procedure. Review it as if you're a new employee trying to follow it for the first time.
+
+Here is the SOP:
+[Paste your complete SOP]
+
+Evaluate it on:
+1. **Clarity** — Could someone new follow this without asking questions? Flag any vague steps.
+2. **Completeness** — Are there missing steps, unstated assumptions, or gaps where someone could get stuck?
+3. **Logic** — Are the steps in the right order? Are there dependencies that aren't mentioned?
+4. **Decision points** — Where does someone need to make a judgment call? Are the criteria clear?
+5. **Error handling** — What could go wrong at each step? Is there guidance for recovering from mistakes?
+6. **Measurability** — How would a manager know if this process is being followed correctly?
+
+For each issue you find:
+- Quote the specific part of the SOP
+- Explain the problem
+- Suggest a specific fix (rewrite the section, don't just say "make it clearer")
+
+Rate the SOP overall: Ready to Use / Needs Minor Edits / Needs Major Revision / Start Over</code></pre>
+
+  <hr>
+
+  <h3>Prompt 2: Identify Automation Opportunities</h3>
+
+  <p>Best for finding steps that could be automated, templated, or eliminated.</p>
+
+  <pre><code>I want to find automation and efficiency opportunities in this SOP.
+
+Here is the SOP:
+[Paste your SOP]
+
+Tools we currently use: [e.g., "Google Workspace, Slack, Notion, Zapier, QuickBooks"]
+Budget for new tools: [e.g., "up to $50/month" or "prefer free tools" or "open to suggestions"]
+
+For each step in the SOP, tell me:
+1. Can this step be fully automated? (If yes, how — specific tool + setup)
+2. Can this step be partially automated? (If yes, what part stays manual?)
+3. Can this step be eliminated entirely? (If yes, why it's unnecessary)
+4. Can this step be templated? (If yes, create the template)
+
+Then give me a prioritized list:
+- Quick wins (under 1 hour to set up, immediate time savings)
+- Medium effort (1-4 hours to set up, significant time savings)
+- Big projects (more than 4 hours, but worth it for the long-term)
+
+Estimate the time saved per week/month for each automation.</code></pre>
+
+  <hr>
+
+  <h3>Prompt 3: Stress-Test Your SOP</h3>
+
+  <p>Best for finding edge cases and failure modes before they happen in real life.</p>
+
+  <pre><code>I need you to stress-test this SOP by imagining realistic scenarios where it could break down.
+
+Here is the SOP:
+[Paste your SOP]
+
+Business context: [brief description of your business and who follows this SOP]
+
+Generate 10 realistic scenarios that would test this SOP, including:
+- A step where the responsible person is unavailable
+- A situation where the tools/software mentioned are down
+- A case where the inputs or data are incomplete
+- A time-sensitive situation where the normal timeline can't be followed
+- An edge case that doesn't fit neatly into the documented process
+- A scenario where two steps conflict with each other
+- A situation involving an unhappy client or stakeholder
+
+For each scenario:
+1. Describe what happens
+2. Identify where the SOP fails or is unclear
+3. Suggest a specific addition or change to handle it
+
+Rank the scenarios by likelihood (most likely to actually happen first).</code></pre>
+
+  <hr>
+
+  <h3>Prompt 4: Simplify an Overcomplicated SOP</h3>
+
+  <p>Best when your SOP is too long, too detailed, or nobody actually follows it because it's overwhelming.</p>
+
+  <pre><code>This SOP is too complicated and people aren't following it. I need you to simplify it without losing the important parts.
+
+Here is the SOP:
+[Paste your SOP]
+
+Context:
+- Who follows this: [role/experience level]
+- How often: [frequency]
+- Main complaint about this SOP: [e.g., "too many steps," "too much detail," "takes too long to read"]
+
+Simplify it by:
+1. Merging steps that are really one action
+2. Removing steps that are obvious to someone at this experience level
+3. Converting paragraph instructions into bullet points or checklists
+4. Moving edge cases and exceptions to an appendix (keep the main SOP clean)
+5. Creating a "quick reference" version (one page, just the key steps) alongside the full version
+
+Give me:
+- The simplified SOP (aim for 50% fewer words)
+- A one-page quick reference card
+- A list of what you removed and why (so I can verify nothing important was cut)</code></pre>
+
+  <hr>
+
+  <h3>Prompt 5: Compare Two Versions of a Process</h3>
+
+  <p>Best when you have a current process and a proposed change, and want to evaluate the tradeoffs.</p>
+
+  <pre><code>I'm considering changing how we do something. Compare these two approaches and help me decide.
+
+Current process:
+[Paste current SOP or describe current approach]
+
+Proposed process:
+[Paste proposed SOP or describe proposed approach]
+
+Context:
+- Why I'm considering a change: [what problem prompted this]
+- Team size: [number of people affected]
+- Risk tolerance: [how bad would it be if the new process fails?]
+
+Compare them on:
+1. Efficiency — time per cycle
+2. Quality — error rate and consistency
+3. Scalability — how well each handles 2x, 5x, 10x volume
+4. Complexity — how hard each is to learn and follow
+5. Dependencies — tools, people, or systems each requires
+6. Risk — what could go wrong with each
+
+Give me a clear recommendation with:
+- Which to use and why
+- What to keep from the current process even if switching
+- A transition plan if you recommend switching (don't just flip a switch)
+- Rollback criteria — when to switch back if it's not working</code></pre>
+
+  <hr>
+
+  <h3>Prompt 6: Create KPIs for an Existing SOP</h3>
+
+  <p>Best when you have a process that works but you can't measure whether it's working well.</p>
+
+  <pre><code>I need to create KPIs and metrics for this SOP so I can track whether it's being followed and whether it's effective.
+
+Here is the SOP:
+[Paste your SOP]
+
+Context:
+- Business goal this SOP supports: [e.g., "client satisfaction," "revenue growth," "operational efficiency"]
+- Current pain points: [e.g., "don't know if people are following it," "quality varies," "takes too long"]
+- Tools available for tracking: [e.g., "Google Sheets, project management tool, CRM"]
+
+Create:
+1. 3-5 KPIs that measure the effectiveness of this process (not just whether steps were completed)
+2. For each KPI: what to measure, target value, how to measure it, and how often
+3. A simple dashboard or tracking template I can implement this week
+4. Warning signs — specific metrics that indicate the process is breaking down
+5. A quarterly review checklist for evaluating and improving this SOP based on the data</code></pre>
+
+  <hr>
+
+  <h3>Prompt 7: Update an Outdated SOP</h3>
+
+  <p>Best when you have an SOP that was written a while ago and doesn't match how things actually work now.</p>
+
+  <pre><code>I have an SOP that's outdated. The process has evolved but the documentation hasn't kept up. I need to update it.
+
+Here is the original SOP:
+[Paste your outdated SOP]
+
+Here's what has changed since this was written:
+[Describe changes — new tools, different team structure, modified steps, things that were added or removed, workarounds people use that aren't documented]
+
+Update the SOP to reflect how the process actually works now. Specifically:
+1. Update all steps to match current reality
+2. Remove steps that are no longer relevant
+3. Add steps that are being done but weren't documented
+4. Update tool references, role titles, and any other stale information
+5. Add a "what changed" section at the top so people who knew the old version can quickly see the differences
+6. Update the revision history
+
+Flag anything where my description of "what changed" seems inconsistent or where I might be missing something.</code></pre>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+</body>
+</html>

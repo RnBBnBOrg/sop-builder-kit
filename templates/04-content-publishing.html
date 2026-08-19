@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Publishing SOP — SOP Builder Kit</title>
+  <style>
+/* Governoble.online — Product Stylesheet */
+:root {
+  --ink: #141821;
+  --ground: #faf9f7;
+  --paper: #fff;
+  --steel: #3d5a80;
+  --coral: #d96b4e;
+  --text: #1d1f24;
+  --text-muted: #5a5d63;
+  --border: #d6d3cc;
+  --code-bg: #f0efeb;
+  --quote-border: #d96b4e;
+  --quote-bg: #fdf6f3;
+  --check-color: #3d5a80;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8;
+    --ground: #111520;
+    --paper: #1a1f2e;
+    --steel: #7ba4d4;
+    --coral: #e0845f;
+    --text: #dddbd7;
+    --text-muted: #8a8d94;
+    --border: #2a2f3d;
+    --code-bg: #161b28;
+    --quote-border: #e0845f;
+    --quote-bg: #1e1a17;
+    --check-color: #7ba4d4;
+  }
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: var(--font-body); color: var(--text); background: var(--ground); line-height: 1.7; -webkit-font-smoothing: antialiased; max-width: var(--max-w); margin: 0 auto; padding: 48px 28px 80px; }
+
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+h4 { font-size: 0.95rem; font-weight: 700; margin: 24px 0 6px; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.5; }
+thead th { text-align: left; font-weight: 700; padding: 10px 14px; border-bottom: 2px solid var(--steel); white-space: nowrap; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--code-bg); }
+
+blockquote { border-left: 3px solid var(--quote-border); background: var(--quote-bg); padding: 16px 20px; margin: 0 0 20px; border-radius: 0 4px 4px 0; font-size: 0.92rem; }
+blockquote p:last-child { margin-bottom: 0; }
+
+td[contenteditable="true"] { outline: none; min-width: 100px; transition: background 0.15s; }
+td[contenteditable="true"]:hover { background: var(--code-bg); }
+td[contenteditable="true"]:focus { background: var(--quote-bg); box-shadow: inset 0 0 0 2px var(--steel); }
+td[contenteditable="true"].placeholder { color: var(--text-muted); font-style: italic; }
+
+textarea.field { width: 100%; min-height: 80px; padding: 12px 16px; font-family: var(--font-body); font-size: 0.92rem; line-height: 1.6; color: var(--text); background: var(--paper); border: 1px solid var(--border); border-radius: 4px; resize: vertical; margin: 8px 0 20px; outline: none; }
+textarea.field:focus { border-color: var(--steel); box-shadow: 0 0 0 2px rgba(61,90,128,0.15); }
+textarea.field::placeholder { color: var(--text-muted); font-style: italic; }
+
+.checklist { list-style: none; padding-left: 0; margin: 0 0 16px; }
+.checklist li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+.checklist input[type="checkbox"] { margin-top: 4px; accent-color: var(--check-color); flex-shrink: 0; }
+
+.toolbar { position: sticky; top: 0; z-index: 50; background: var(--ground); border-bottom: 1px solid var(--border); padding: 10px 0; margin: -48px -28px 32px; padding: 10px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.toolbar-left { display: flex; align-items: center; gap: 12px; }
+.toolbar-right { display: flex; align-items: center; gap: 12px; }
+.toolbar button { font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; padding: 7px 16px; border-radius: 4px; border: 1px solid var(--border); background: var(--paper); color: var(--text); cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+.toolbar button:hover { background: var(--code-bg); border-color: var(--steel); }
+.toolbar button.primary { background: var(--steel); color: #fff; border-color: var(--steel); }
+.toolbar button.primary:hover { background: var(--coral); border-color: var(--coral); }
+#save-indicator { font-size: 0.78rem; color: var(--text-muted); opacity: 0; transition: opacity 0.3s; }
+#save-indicator.visible { opacity: 1; }
+
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+
+@media print {
+  body { background: #fff; color: #000; max-width: none; padding: 0; }
+  .toolbar { display: none; }
+  h2 { border-bottom-color: #ccc; }
+  thead th { border-bottom-color: #000; }
+  tbody td { border-bottom-color: #ddd; }
+  td[contenteditable="true"]:empty::after { content: ""; }
+  textarea.field { border-color: #ccc; }
+  .product-header { border-bottom-color: #000; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 24px 16px 48px; }
+  .toolbar { margin: -24px -16px 24px; padding: 10px 16px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  table { font-size: 0.82rem; }
+  thead th, tbody td { padding: 8px 10px; }
+}
+  </style>
+</head>
+<body>
+
+  <div class="toolbar" id="toolbar">
+    <div class="toolbar-left">
+      <span id="save-indicator"></span>
+    </div>
+    <div class="toolbar-right">
+      <button id="btn-clear">Clear All</button>
+      <button id="btn-print" class="primary">Save / Print PDF</button>
+    </div>
+  </div>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>SOP Builder Kit</h1>
+  </div>
+
+  <h2>Content Publishing SOP</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:35%">Field</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Version</strong></td><td contenteditable="true" data-placeholder="1.0"></td></tr>
+        <tr><td><strong>Effective Date</strong></td><td contenteditable="true" data-placeholder="Enter date"></td></tr>
+        <tr><td><strong>Last Reviewed</strong></td><td contenteditable="true" data-placeholder="Enter date"></td></tr>
+        <tr><td><strong>Owner</strong></td><td contenteditable="true" data-placeholder="Name / Role"></td></tr>
+        <tr><td><strong>Approval</strong></td><td contenteditable="true" data-placeholder="Approver Name / Role"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>1. Purpose</h2>
+
+  <p>Take content from raw idea to published and promoted — with consistent quality, clear approvals, and nothing sitting in draft purgatory forever.</p>
+
+  <hr>
+
+  <h2>2. Scope</h2>
+
+  <ul>
+    <li><strong>Applies to:</strong> All published content (blog posts, social media, newsletters, case studies, videos)</li>
+    <li><strong>Triggers:</strong> Approved content idea added to the content calendar</li>
+    <li><strong>Does NOT cover:</strong> Paid advertising copy, legal/compliance documents, or internal-only communications</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. Roles &amp; Responsibilities</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Responsibility</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Content Lead / Manager</strong></td><td>Owns the calendar, assigns work, final approval</td></tr>
+        <tr><td><strong>Writer / Creator</strong></td><td>Produces the draft, incorporates feedback</td></tr>
+        <tr><td><strong>Editor / Reviewer</strong></td><td>Reviews for quality, accuracy, brand voice</td></tr>
+        <tr><td><strong>Designer (if applicable)</strong></td><td>Creates visuals, graphics, thumbnails</td></tr>
+        <tr><td><strong>Publisher</strong></td><td>Formats, schedules, and publishes the final piece</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><em>In a small team, one person may fill multiple roles.</em></p>
+
+  <hr>
+
+  <h2>4. Content Pipeline Stages</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Status</th><th>Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Idea</td><td>Proposed</td><td>Anyone</td></tr>
+        <tr><td>2. Approved</td><td>On the calendar</td><td>Content Lead</td></tr>
+        <tr><td>3. Drafting</td><td>In progress</td><td>Writer</td></tr>
+        <tr><td>4. Review</td><td>Feedback needed</td><td>Editor</td></tr>
+        <tr><td>5. Revisions</td><td>Incorporating feedback</td><td>Writer</td></tr>
+        <tr><td>6. Final Approval</td><td>Ready to publish</td><td>Content Lead</td></tr>
+        <tr><td>7. Scheduled</td><td>Queued for publish date</td><td>Publisher</td></tr>
+        <tr><td>8. Published</td><td>Live</td><td>Publisher</td></tr>
+        <tr><td>9. Promoted</td><td>Distributed across channels</td><td>Content Lead</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>5. Procedure</h2>
+
+  <h3>Stage 1: Idea Capture</h3>
+
+  <p><strong>Who:</strong> Anyone on the team</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Add idea to the content backlog with:</label></li>
+  </ul>
+  <ul style="margin: 0 0 16px; padding-left: 44px; font-size: 0.95rem;">
+    <li>Working title</li>
+    <li>Target audience</li>
+    <li>Key message or angle</li>
+    <li>Content type (blog, social, newsletter, video, etc.)</li>
+    <li>Source of idea (customer question, trend, internal expertise, keyword research)</li>
+  </ul>
+
+  <h4>Idea Evaluation Criteria:</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Criteria</th><th>Question</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Relevance</strong></td><td>Does our audience care about this?</td></tr>
+        <tr><td><strong>Expertise</strong></td><td>Can we say something credible and useful?</td></tr>
+        <tr><td><strong>Timeliness</strong></td><td>Is this relevant now or evergreen?</td></tr>
+        <tr><td><strong>Business Alignment</strong></td><td>Does this support our goals (leads, authority, SEO)?</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h3>Stage 2: Approval &amp; Assignment</h3>
+
+  <p><strong>Who:</strong> Content Lead</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Review ideas weekly (or at planning cadence)</label></li>
+    <li><input type="checkbox"><label>Approve, reject, or defer each idea</label></li>
+    <li><input type="checkbox"><label>For approved ideas:</label></li>
+  </ul>
+  <ul style="margin: 0 0 16px; padding-left: 44px; font-size: 0.95rem;">
+    <li>Assign a writer</li>
+    <li>Set a target publish date</li>
+    <li>Add to the content calendar</li>
+    <li>Provide a brief:</li>
+  </ul>
+
+  <h4>Content Brief Template:</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:35%">Field</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Title / Topic</strong></td><td contenteditable="true" data-placeholder="Working title"></td></tr>
+        <tr><td><strong>Content Type</strong></td><td contenteditable="true" data-placeholder="Blog / Social / Newsletter / Video / Case Study"></td></tr>
+        <tr><td><strong>Target Audience</strong></td><td contenteditable="true" data-placeholder="Who is this for?"></td></tr>
+        <tr><td><strong>Goal</strong></td><td contenteditable="true" data-placeholder="What should the reader do/feel/know after?"></td></tr>
+        <tr><td><strong>Key Points to Cover</strong></td><td contenteditable="true" data-placeholder="Bullet list of must-include topics"></td></tr>
+        <tr><td><strong>Target Length</strong></td><td contenteditable="true" data-placeholder="Word count or duration"></td></tr>
+        <tr><td><strong>SEO Keywords</strong></td><td contenteditable="true" data-placeholder="Primary and secondary keywords, if applicable"></td></tr>
+        <tr><td><strong>References / Research</strong></td><td contenteditable="true" data-placeholder="Links, data sources, examples"></td></tr>
+        <tr><td><strong>Tone</strong></td><td contenteditable="true" data-placeholder="Professional / Conversational / Technical / etc."></td></tr>
+        <tr><td><strong>Deadline — First Draft</strong></td><td contenteditable="true" data-placeholder="Date"></td></tr>
+        <tr><td><strong>Target Publish Date</strong></td><td contenteditable="true" data-placeholder="Date"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h3>Stage 3: Drafting</h3>
+
+  <p><strong>Who:</strong> Writer / Creator</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Write the first draft based on the brief</label></li>
+    <li><input type="checkbox"><label>Include:</label></li>
+  </ul>
+  <ul style="margin: 0 0 8px; padding-left: 44px; font-size: 0.95rem;">
+    <li>Headline (aim for 3 options)</li>
+    <li>Introduction that hooks the reader in the first 2 sentences</li>
+    <li>Body content organized with subheadings</li>
+    <li>Conclusion with a clear call-to-action</li>
+    <li>Meta description (for SEO content)</li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Add notes for designer (image needs, graphics, screenshots)</label></li>
+    <li><input type="checkbox"><label>Move status to "Review" when draft is ready</label></li>
+  </ul>
+
+  <h4>Writing Checklist:</h4>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Does the opening hook the reader?</label></li>
+    <li><input type="checkbox"><label>Is every section earning its place? (Cut ruthlessly)</label></li>
+    <li><input type="checkbox"><label>Are claims backed by data, examples, or experience?</label></li>
+    <li><input type="checkbox"><label>Is there a clear call-to-action?</label></li>
+    <li><input type="checkbox"><label>Would I share this if I saw it in my feed?</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Stage 4: Review</h3>
+
+  <p><strong>Who:</strong> Editor / Reviewer</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Review within <strong>2 business days</strong> of receiving the draft</label></li>
+    <li><input type="checkbox"><label>Check for:</label></li>
+  </ul>
+  <ul class="checklist" style="padding-left: 28px;">
+    <li><input type="checkbox"><label>Accuracy — are facts, stats, and claims correct?</label></li>
+    <li><input type="checkbox"><label>Clarity — can the target audience understand this without re-reading?</label></li>
+    <li><input type="checkbox"><label>Brand voice — does this sound like us?</label></li>
+    <li><input type="checkbox"><label>Structure — does it flow logically?</label></li>
+    <li><input type="checkbox"><label>Grammar and spelling</label></li>
+    <li><input type="checkbox"><label>SEO — keywords used naturally, meta description present</label></li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Leave specific, actionable feedback (not just "make it better")</label></li>
+    <li><input type="checkbox"><label>Move status to "Revisions"</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Stage 5: Revisions</h3>
+
+  <p><strong>Who:</strong> Writer</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Address all feedback</label></li>
+    <li><input type="checkbox"><label>If you disagree with a suggestion, explain why (don't silently ignore it)</label></li>
+    <li><input type="checkbox"><label>Move status back to "Review" if major changes, or to "Final Approval" if minor</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Stage 6: Final Approval</h3>
+
+  <p><strong>Who:</strong> Content Lead</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Final read-through</label></li>
+    <li><input type="checkbox"><label>Confirm it matches the brief</label></li>
+    <li><input type="checkbox"><label>Approve or request one more round</label></li>
+    <li><input type="checkbox"><label>Once approved, move to "Scheduled"</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Stage 7: Formatting &amp; Scheduling</h3>
+
+  <p><strong>Who:</strong> Publisher</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Format for the target platform:</label></li>
+  </ul>
+  <ul class="checklist" style="padding-left: 28px;">
+    <li><input type="checkbox"><label>Add images, graphics, or media</label></li>
+    <li><input type="checkbox"><label>Format headings, lists, links</label></li>
+    <li><input type="checkbox"><label>Add internal/external links</label></li>
+    <li><input type="checkbox"><label>Set featured image and alt text</label></li>
+    <li><input type="checkbox"><label>Add meta title and description</label></li>
+    <li><input type="checkbox"><label>Add categories/tags</label></li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Preview the published version (check formatting on desktop AND mobile)</label></li>
+    <li><input type="checkbox"><label>Schedule for the target publish date and time</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Stage 8: Publish &amp; Promote</h3>
+
+  <p><strong>Who:</strong> Publisher + Content Lead</p>
+
+  <h4>On publish:</h4>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Verify the post is live and formatted correctly</label></li>
+    <li><input type="checkbox"><label>Check all links work</label></li>
+  </ul>
+
+  <h4>Promotion checklist (within 24-48 hours):</h4>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Share on social media (LinkedIn, X/Twitter, Facebook, Instagram — whichever applies)</label></li>
+    <li><input type="checkbox"><label>Send to email list / newsletter (if applicable)</label></li>
+    <li><input type="checkbox"><label>Share internally with the team (Slack / email)</label></li>
+    <li><input type="checkbox"><label>Notify anyone mentioned or quoted in the piece</label></li>
+    <li><input type="checkbox"><label>Submit to relevant communities or forums (if appropriate)</label></li>
+    <li><input type="checkbox"><label>Repurpose: pull 3-5 social snippets, a quote graphic, or a short video clip</label></li>
+  </ul>
+
+  <hr>
+
+  <h2>6. Content Calendar Template</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Publish Date</th><th>Title</th><th>Type</th><th>Author</th><th>Status</th><th>Platform</th><th>Promotion Channels</th></tr>
+      </thead>
+      <tbody>
+        <tr><td contenteditable="true" data-placeholder="Date"></td><td contenteditable="true" data-placeholder="Title"></td><td contenteditable="true" data-placeholder="Blog"></td><td contenteditable="true" data-placeholder="Name"></td><td contenteditable="true" data-placeholder="Draft"></td><td contenteditable="true" data-placeholder="Website"></td><td contenteditable="true" data-placeholder="LinkedIn, Newsletter"></td></tr>
+        <tr><td contenteditable="true" data-placeholder="Date"></td><td contenteditable="true" data-placeholder="Title"></td><td contenteditable="true" data-placeholder="Social"></td><td contenteditable="true" data-placeholder="Name"></td><td contenteditable="true" data-placeholder="Scheduled"></td><td contenteditable="true" data-placeholder="Instagram"></td><td contenteditable="true" data-placeholder="Stories, Email"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>7. Quality Checkpoints</h2>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Brief provided before writing starts</label></li>
+    <li><input type="checkbox"><label>Draft submitted by deadline</label></li>
+    <li><input type="checkbox"><label>Review completed within 2 business days</label></li>
+    <li><input type="checkbox"><label>Final approval received before scheduling</label></li>
+    <li><input type="checkbox"><label>Preview checked on desktop and mobile</label></li>
+    <li><input type="checkbox"><label>Promotion completed within 48 hours of publish</label></li>
+  </ul>
+
+  <hr>
+
+  <h2>8. Revision History</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td contenteditable="true" data-placeholder="1.0"></td><td contenteditable="true" data-placeholder="Date"></td><td contenteditable="true" data-placeholder="Name"></td><td contenteditable="true" data-placeholder="Initial version"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+  <script>
+// Governoble Interactive Template Engine
+(function() {
+  var STORAGE_KEY = 'governoble_' + document.title.replace(/[^a-z0-9]/gi, '_');
+
+  function saveState() {
+    var state = {};
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (!el.classList.contains('placeholder') && el.textContent.trim()) {
+        state['edit_' + i] = el.innerHTML;
+      }
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) {
+      state['check_' + i] = el.checked;
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) {
+      state['radio_' + i] = el.checked;
+    });
+    document.querySelectorAll('textarea').forEach(function(el, i) {
+      state['textarea_' + i] = el.value;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSaveIndicator();
+    } catch(e) {}
+  }
+
+  function restoreState() {
+    var stored;
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+    if (!stored) return;
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (stored['edit_' + i]) {
+        el.innerHTML = stored['edit_' + i];
+        el.classList.remove('placeholder');
+      }
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) {
+      if (stored['check_' + i] !== undefined) el.checked = stored['check_' + i];
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) {
+      if (stored['radio_' + i] !== undefined) el.checked = stored['radio_' + i];
+    });
+    document.querySelectorAll('textarea').forEach(function(el, i) {
+      if (stored['textarea_' + i]) el.value = stored['textarea_' + i];
+    });
+  }
+
+  function showSaveIndicator() {
+    var el = document.getElementById('save-indicator');
+    if (!el) return;
+    el.textContent = 'Saved';
+    el.classList.add('visible');
+    setTimeout(function() { el.classList.remove('visible'); }, 1500);
+  }
+
+  var saveTimeout;
+  function debouncedSave() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(saveState, 800);
+  }
+
+  function setupPlaceholders() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+      var ph = el.getAttribute('data-placeholder');
+      if (!ph) return;
+      if (!el.textContent.trim()) {
+        el.textContent = ph;
+        el.classList.add('placeholder');
+      }
+      el.addEventListener('focus', function() {
+        if (el.classList.contains('placeholder')) {
+          el.textContent = '';
+          el.classList.remove('placeholder');
+        }
+      });
+      el.addEventListener('blur', function() {
+        if (!el.textContent.trim()) {
+          el.textContent = ph;
+          el.classList.add('placeholder');
+        }
+      });
+    });
+  }
+
+  function setupToolbar() {
+    document.getElementById('btn-print').addEventListener('click', function() { window.print(); });
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      if (!confirm('Clear all entries and start fresh? This cannot be undone.')) return;
+      document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+        el.innerHTML = '';
+        var ph = el.getAttribute('data-placeholder');
+        if (ph) { el.textContent = ph; el.classList.add('placeholder'); }
+      });
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(function(el) { el.checked = false; });
+      document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+    });
+  }
+
+  function init() {
+    setupPlaceholders();
+    setupToolbar();
+    restoreState();
+    document.addEventListener('input', function(e) {
+      if (e.target.matches('[contenteditable], textarea')) debouncedSave();
+    });
+    document.addEventListener('change', function(e) {
+      if (e.target.matches('input[type="checkbox"], input[type="radio"]')) debouncedSave();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>

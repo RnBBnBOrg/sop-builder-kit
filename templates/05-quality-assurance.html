@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality Assurance SOP — SOP Builder Kit</title>
+  <style>
+:root {
+  --ink: #141821; --ground: #faf9f7; --paper: #fff; --steel: #3d5a80; --coral: #d96b4e;
+  --text: #1d1f24; --text-muted: #5a5d63; --border: #d6d3cc; --code-bg: #f0efeb;
+  --quote-border: #d96b4e; --quote-bg: #fdf6f3; --check-color: #3d5a80;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8; --ground: #111520; --paper: #1a1f2e; --steel: #7ba4d4; --coral: #e0845f;
+    --text: #dddbd7; --text-muted: #8a8d94; --border: #2a2f3d; --code-bg: #161b28;
+    --quote-border: #e0845f; --quote-bg: #1e1a17; --check-color: #7ba4d4;
+  }
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text); background: var(--ground); line-height: 1.7; -webkit-font-smoothing: antialiased; max-width: var(--max-w); margin: 0 auto; padding: 48px 28px 80px; }
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+h4 { font-size: 0.95rem; font-weight: 700; margin: 24px 0 6px; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul, ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+em { font-style: italic; }
+blockquote { border-left: 3px solid var(--quote-border); background: var(--quote-bg); padding: 16px 20px; margin: 0 0 20px; border-radius: 0 4px 4px 0; font-size: 0.92rem; }
+blockquote p:last-child { margin-bottom: 0; }
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.5; }
+thead th { text-align: left; font-weight: 700; padding: 10px 14px; border-bottom: 2px solid var(--steel); white-space: nowrap; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--code-bg); }
+td[contenteditable="true"] { outline: none; min-width: 100px; transition: background 0.15s; }
+td[contenteditable="true"]:hover { background: var(--code-bg); }
+td[contenteditable="true"]:focus { background: var(--quote-bg); box-shadow: inset 0 0 0 2px var(--steel); }
+td[contenteditable="true"].placeholder { color: var(--text-muted); font-style: italic; }
+textarea.field { width: 100%; min-height: 80px; padding: 12px 16px; font-family: var(--font-body); font-size: 0.92rem; line-height: 1.6; color: var(--text); background: var(--paper); border: 1px solid var(--border); border-radius: 4px; resize: vertical; margin: 8px 0 20px; outline: none; }
+textarea.field:focus { border-color: var(--steel); box-shadow: 0 0 0 2px rgba(61,90,128,0.15); }
+textarea.field::placeholder { color: var(--text-muted); font-style: italic; }
+.check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.92rem; line-height: 1.6; }
+.check-item input[type="checkbox"] { margin-top: 5px; accent-color: var(--steel); flex-shrink: 0; }
+.toolbar { position: sticky; top: 0; z-index: 50; background: var(--ground); border-bottom: 1px solid var(--border); padding: 10px 28px; margin: -48px -28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.toolbar-left { display: flex; align-items: center; gap: 12px; }
+.toolbar-right { display: flex; align-items: center; gap: 12px; }
+.toolbar button { font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; padding: 7px 16px; border-radius: 4px; border: 1px solid var(--border); background: var(--paper); color: var(--text); cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+.toolbar button:hover { background: var(--code-bg); border-color: var(--steel); }
+.toolbar button.primary { background: var(--steel); color: #fff; border-color: var(--steel); }
+.toolbar button.primary:hover { background: var(--coral); border-color: var(--coral); }
+#save-indicator { font-size: 0.78rem; color: var(--text-muted); opacity: 0; transition: opacity 0.3s; }
+#save-indicator.visible { opacity: 1; }
+#progress-count { font-size: 0.78rem; color: var(--text-muted); }
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+@media print { body { background: #fff; color: #000; max-width: none; padding: 0; } .toolbar { display: none; } h2 { border-bottom-color: #ccc; } thead th { border-bottom-color: #000; } tbody td { border-bottom-color: #ddd; } .product-header { border-bottom-color: #000; } }
+@media (max-width: 480px) { body { padding: 24px 16px 48px; } .toolbar { margin: -24px -16px 24px; padding: 10px 16px; } h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } table { font-size: 0.82rem; } thead th, tbody td { padding: 8px 10px; } }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar" id="toolbar">
+    <div class="toolbar-left">
+      <span id="progress-count"></span>
+      <span id="save-indicator"></span>
+    </div>
+    <div class="toolbar-right">
+      <button id="btn-clear">Clear All</button>
+      <button id="btn-print" class="primary">Save / Print PDF</button>
+    </div>
+  </div>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>Quality Assurance SOP</h1>
+  </div>
+
+  <blockquote>
+    <p><strong>Version:</strong> 1.0</p>
+    <p><strong>Effective Date:</strong> <span contenteditable="true" data-placeholder="Date" style="border-bottom:1px dashed var(--border); padding:0 4px; min-width:80px; display:inline-block"></span></p>
+    <p><strong>Last Reviewed:</strong> <span contenteditable="true" data-placeholder="Date" style="border-bottom:1px dashed var(--border); padding:0 4px; min-width:80px; display:inline-block"></span></p>
+    <p><strong>Owner:</strong> <span contenteditable="true" data-placeholder="Name / Role" style="border-bottom:1px dashed var(--border); padding:0 4px; min-width:100px; display:inline-block"></span></p>
+    <p><strong>Approval:</strong> <span contenteditable="true" data-placeholder="Approver Name / Role" style="border-bottom:1px dashed var(--border); padding:0 4px; min-width:100px; display:inline-block"></span></p>
+  </blockquote>
+
+  <hr>
+
+  <h2>1. Purpose</h2>
+  <p>Catch mistakes before your clients do. This SOP defines how work gets reviewed, approved, and released — so every deliverable meets the standard your reputation depends on.</p>
+
+  <hr>
+
+  <h2>2. Scope</h2>
+  <ul>
+    <li><strong>Applies to:</strong> All client-facing deliverables and internal outputs that impact operations</li>
+    <li><strong>Triggers:</strong> Any work product moving from "done" to "delivered" or "published"</li>
+    <li><strong>Does NOT cover:</strong> Internal brainstorms, rough drafts, or work-in-progress (QA starts when the creator says "this is ready for review")</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. Roles &amp; Responsibilities</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Role</th><th>Responsibility</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Creator</strong></td><td>Produces the work, runs self-check before submitting for review</td></tr>
+        <tr><td><strong>Reviewer</strong></td><td>Evaluates against quality criteria, provides specific feedback</td></tr>
+        <tr><td><strong>Approver</strong></td><td>Final sign-off — confirms it's ready to ship</td></tr>
+        <tr><td><strong>Client Contact</strong></td><td>Presents the deliverable, collects client feedback</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>4. Quality Levels</h2>
+  <p>Not everything needs the same level of review. Match the review depth to the risk:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Level</th><th>When to Use</th><th>Review Process</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Quick Check</strong></td><td>Low-risk, internal, or routine work</td><td>Self-check + one peer review</td></tr>
+        <tr><td><strong>Standard Review</strong></td><td>Client deliverables, published content</td><td>Self-check + reviewer + approver</td></tr>
+        <tr><td><strong>Deep Review</strong></td><td>High-stakes, complex, or first-of-its-kind work</td><td>Self-check + reviewer + approver + second opinion</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>5. Procedure</h2>
+
+  <h3>Step 1: Creator Self-Check</h3>
+  <p><strong>Who:</strong> The person who produced the work<br><strong>When:</strong> Before submitting for any review</p>
+
+  <h4>Universal Self-Check:</h4>
+  <div class="check-item"><input type="checkbox"><span>Does this meet the requirements in the brief / ticket / request?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Have I proofread for spelling, grammar, and formatting?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Are all names, numbers, and dates correct?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Does this match our brand standards (voice, visual identity)?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Have I tested all links, buttons, or interactive elements?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Would I be comfortable if the CEO / biggest client saw this?</span></div>
+  <div class="check-item"><input type="checkbox"><span>Am I submitting my best work, or rushing to hit a deadline?</span></div>
+
+  <h4>Documents &amp; Reports:</h4>
+  <div class="check-item"><input type="checkbox"><span>Page numbers, headers, footers correct</span></div>
+  <div class="check-item"><input type="checkbox"><span>Table of contents matches actual sections</span></div>
+  <div class="check-item"><input type="checkbox"><span>Charts and data are current and sourced</span></div>
+  <div class="check-item"><input type="checkbox"><span>Client's name and details are correct throughout (no copy-paste from another client)</span></div>
+
+  <h4>Design / Creative:</h4>
+  <div class="check-item"><input type="checkbox"><span>Correct dimensions for the target platform</span></div>
+  <div class="check-item"><input type="checkbox"><span>Brand colors, fonts, and logo used correctly</span></div>
+  <div class="check-item"><input type="checkbox"><span>Text is readable at actual display size</span></div>
+  <div class="check-item"><input type="checkbox"><span>High-resolution assets used (no pixelation)</span></div>
+
+  <h4>Code / Technical:</h4>
+  <div class="check-item"><input type="checkbox"><span>Runs without errors</span></div>
+  <div class="check-item"><input type="checkbox"><span>Tested against requirements / acceptance criteria</span></div>
+  <div class="check-item"><input type="checkbox"><span>Edge cases considered</span></div>
+  <div class="check-item"><input type="checkbox"><span>No hardcoded credentials or sensitive data</span></div>
+
+  <hr>
+
+  <h3>Step 2: Submit for Review</h3>
+  <p><strong>Who:</strong> Creator<br><strong>When:</strong> After self-check is complete</p>
+  <div class="check-item"><input type="checkbox"><span>Mark the work as "Ready for Review" in your project management tool</span></div>
+  <div class="check-item"><input type="checkbox"><span>Tag the assigned reviewer</span></div>
+  <div class="check-item"><input type="checkbox"><span>Include: link to deliverable, original brief, context notes, deadline for review</span></div>
+
+  <hr>
+
+  <h3>Step 3: Reviewer Evaluation</h3>
+  <p><strong>Who:</strong> Reviewer<br><strong>When:</strong> Within the agreed review window (default: 1 business day for Quick Check, 2 for Standard/Deep)</p>
+
+  <h4>Review Checklist:</h4>
+  <div class="check-item"><input type="checkbox"><span><strong>Accuracy</strong> — Are all facts, figures, and references correct?</span></div>
+  <div class="check-item"><input type="checkbox"><span><strong>Completeness</strong> — Does it cover everything in the brief?</span></div>
+  <div class="check-item"><input type="checkbox"><span><strong>Consistency</strong> — Does it match our standards and prior work?</span></div>
+  <div class="check-item"><input type="checkbox"><span><strong>Clarity</strong> — Will the audience understand it without explanation?</span></div>
+  <div class="check-item"><input type="checkbox"><span><strong>Quality</strong> — Is this something we're proud to put our name on?</span></div>
+
+  <h4>Providing Feedback:</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Do</th><th>Don't</th></tr></thead>
+      <tbody>
+        <tr><td>Be specific ("The chart on page 3 uses 2024 data — update to 2025")</td><td>Be vague ("Fix the data")</td></tr>
+        <tr><td>Explain why ("The client specifically asked for monthly breakdown")</td><td>Just say "wrong"</td></tr>
+        <tr><td>Distinguish must-fix from nice-to-have</td><td>Treat everything as critical</td></tr>
+        <tr><td>Acknowledge what's done well</td><td>Only point out problems</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>After reviewing:</h4>
+  <div class="check-item"><input type="checkbox"><span>Mark as "Approved," "Needs Revisions," or "Needs Discussion"</span></div>
+  <div class="check-item"><input type="checkbox"><span>If revisions needed: list specific changes required</span></div>
+  <div class="check-item"><input type="checkbox"><span>If discussion needed: schedule a 15-minute call rather than going back and forth in comments</span></div>
+
+  <hr>
+
+  <h3>Step 4: Revisions (if needed)</h3>
+  <p><strong>Who:</strong> Creator<br><strong>When:</strong> Within 1 business day of receiving feedback</p>
+  <div class="check-item"><input type="checkbox"><span>Address all required changes</span></div>
+  <div class="check-item"><input type="checkbox"><span>Respond to each piece of feedback (what you changed, or why you didn't)</span></div>
+  <div class="check-item"><input type="checkbox"><span>Resubmit for review</span></div>
+  <div class="check-item"><input type="checkbox"><span>If this is the second round of revisions, escalate to the Approver for a final call</span></div>
+
+  <hr>
+
+  <h3>Step 5: Final Approval</h3>
+  <p><strong>Who:</strong> Approver<br><strong>When:</strong> After reviewer marks as "Approved" (or after revisions are accepted)</p>
+  <div class="check-item"><input type="checkbox"><span>Quick final review — focus on overall quality and brand alignment</span></div>
+  <div class="check-item"><input type="checkbox"><span>Approve for delivery / publication</span></div>
+  <div class="check-item"><input type="checkbox"><span>If not approved: provide a specific reason and required action</span></div>
+
+  <hr>
+
+  <h3>Step 6: Delivery / Release</h3>
+  <p><strong>Who:</strong> Client Contact or Publisher</p>
+  <div class="check-item"><input type="checkbox"><span>Deliver to client or publish per the relevant SOP</span></div>
+  <div class="check-item"><input type="checkbox"><span>Confirm receipt / successful publication</span></div>
+  <div class="check-item"><input type="checkbox"><span>Document any client feedback for future improvement</span></div>
+
+  <hr>
+
+  <h2>6. Common Quality Issues &amp; Prevention</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Issue</th><th>Root Cause</th><th>Prevention</th></tr></thead>
+      <tbody>
+        <tr><td>Wrong client name in deliverable</td><td>Copy-paste from previous project</td><td>Add "client name check" to self-check</td></tr>
+        <tr><td>Outdated data or statistics</td><td>Reusing old content without updating</td><td>Always verify dates on data sources</td></tr>
+        <tr><td>Broken links</td><td>Links changed after document was created</td><td>Check all links before final approval</td></tr>
+        <tr><td>Inconsistent formatting</td><td>Multiple contributors, no style guide</td><td>Create and enforce a style guide</td></tr>
+        <tr><td>Missed requirements</td><td>Brief not read carefully</td><td>Reviewer checks deliverable against brief line by line</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>7. Escalation Path</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situation</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Creator and reviewer disagree</td><td>Approver makes the call</td></tr>
+        <tr><td>Quality issue found after delivery</td><td>Notify client immediately, fix, and do a post-mortem</td></tr>
+        <tr><td>Deadline conflict prevents proper review</td><td>Escalate to Approver — never skip review to hit a deadline</td></tr>
+        <tr><td>Recurring quality issues from same source</td><td>Hiring Manager addresses in 1:1, not in review comments</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>8. Metrics to Track</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Target</th><th>How to Measure</th></tr></thead>
+      <tbody>
+        <tr><td>First-pass approval rate</td><td contenteditable="true" data-placeholder=">70%"></td><td>Deliverables approved without revisions / total deliverables</td></tr>
+        <tr><td>Average revision rounds</td><td contenteditable="true" data-placeholder="<2"></td><td>Track in project management tool</td></tr>
+        <tr><td>Client revision requests</td><td contenteditable="true" data-placeholder="<1 per deliverable"></td><td>Count client-requested changes after delivery</td></tr>
+        <tr><td>Review turnaround time</td><td contenteditable="true" data-placeholder="<2 business days"></td><td>Time from "Ready for Review" to feedback</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>9. Quality Checkpoints</h2>
+  <div class="check-item"><input type="checkbox"><span>Creator completed self-check before submitting</span></div>
+  <div class="check-item"><input type="checkbox"><span>Reviewer evaluated within the agreed window</span></div>
+  <div class="check-item"><input type="checkbox"><span>All required revisions addressed</span></div>
+  <div class="check-item"><input type="checkbox"><span>Final approval received before delivery</span></div>
+  <div class="check-item"><input type="checkbox"><span>No quality issues reported by client within 5 business days</span></div>
+
+  <hr>
+
+  <h2>10. Revision History</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr></thead>
+      <tbody>
+        <tr><td>1.0</td><td contenteditable="true" data-placeholder="Date"></td><td contenteditable="true" data-placeholder="Name"></td><td contenteditable="true" data-placeholder="Initial version"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+  <script>
+(function() {
+  var STORAGE_KEY = 'governoble_' + document.title.replace(/[^a-z0-9]/gi, '_');
+  function saveState() {
+    var state = {};
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (!el.classList.contains('placeholder') && el.textContent.trim()) state['edit_' + i] = el.innerHTML;
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) { state['check_' + i] = el.checked; });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) { state['radio_' + i] = el.checked; });
+    document.querySelectorAll('textarea').forEach(function(el, i) { state['textarea_' + i] = el.value; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); showSaveIndicator(); } catch(e) {}
+  }
+  function restoreState() {
+    var stored;
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+    if (!stored) return;
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (stored['edit_' + i]) { el.innerHTML = stored['edit_' + i]; el.classList.remove('placeholder'); }
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) {
+      if (stored['check_' + i] !== undefined) el.checked = stored['check_' + i];
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) {
+      if (stored['radio_' + i] !== undefined) el.checked = stored['radio_' + i];
+    });
+    document.querySelectorAll('textarea').forEach(function(el, i) {
+      if (stored['textarea_' + i]) el.value = stored['textarea_' + i];
+    });
+  }
+  function showSaveIndicator() {
+    var el = document.getElementById('save-indicator');
+    if (!el) return;
+    el.textContent = 'Saved'; el.classList.add('visible');
+    setTimeout(function() { el.classList.remove('visible'); }, 1500);
+  }
+  function updateProgress() {
+    var counter = document.getElementById('progress-count');
+    if (!counter) return;
+    var total = document.querySelectorAll('input[type="checkbox"]').length;
+    var checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    counter.textContent = checked + ' / ' + total + ' complete';
+  }
+  var saveTimeout;
+  function debouncedSave() { clearTimeout(saveTimeout); saveTimeout = setTimeout(saveState, 800); }
+  function setupPlaceholders() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+      var ph = el.getAttribute('data-placeholder');
+      if (!ph) return;
+      if (!el.textContent.trim()) { el.textContent = ph; el.classList.add('placeholder'); }
+      el.addEventListener('focus', function() {
+        if (el.classList.contains('placeholder')) { el.textContent = ''; el.classList.remove('placeholder'); }
+      });
+      el.addEventListener('blur', function() {
+        if (!el.textContent.trim()) { el.textContent = ph; el.classList.add('placeholder'); }
+      });
+    });
+  }
+  function setupToolbar() {
+    document.getElementById('btn-print').addEventListener('click', function() { window.print(); });
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      if (!confirm('Clear all entries and start fresh? This cannot be undone.')) return;
+      document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+        el.innerHTML = '';
+        var ph = el.getAttribute('data-placeholder');
+        if (ph) { el.textContent = ph; el.classList.add('placeholder'); }
+      });
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(function(el) { el.checked = false; });
+      document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
+      updateProgress();
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+    });
+  }
+  function init() {
+    setupPlaceholders(); setupToolbar(); restoreState(); updateProgress();
+    document.addEventListener('input', function(e) {
+      if (e.target.matches('[contenteditable], textarea')) debouncedSave();
+    });
+    document.addEventListener('change', function(e) {
+      if (e.target.matches('input[type="checkbox"], input[type="radio"]')) { updateProgress(); debouncedSave(); }
+    });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+})();
+  </script>
+</body>
+</html>

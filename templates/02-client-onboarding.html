@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Onboarding SOP — SOP Builder Kit</title>
+  <style>
+/* Governoble.online — Product Stylesheet */
+:root {
+  --ink: #141821;
+  --ground: #faf9f7;
+  --paper: #fff;
+  --steel: #3d5a80;
+  --coral: #d96b4e;
+  --text: #1d1f24;
+  --text-muted: #5a5d63;
+  --border: #d6d3cc;
+  --code-bg: #f0efeb;
+  --quote-border: #d96b4e;
+  --quote-bg: #fdf6f3;
+  --check-color: #3d5a80;
+  --font-display: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  --max-w: 760px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edece8;
+    --ground: #111520;
+    --paper: #1a1f2e;
+    --steel: #7ba4d4;
+    --coral: #e0845f;
+    --text: #dddbd7;
+    --text-muted: #8a8d94;
+    --border: #2a2f3d;
+    --code-bg: #161b28;
+    --quote-border: #e0845f;
+    --quote-bg: #1e1a17;
+    --check-color: #7ba4d4;
+  }
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--ground);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+h1 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.25; }
+h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.015em; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); line-height: 1.3; }
+h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin: 32px 0 8px; line-height: 1.35; }
+h4 { font-size: 0.95rem; font-weight: 700; margin: 24px 0 6px; }
+p { margin: 0 0 16px; font-size: 0.95rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+ul { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+ol { margin: 0 0 16px; padding-left: 24px; font-size: 0.95rem; }
+li { margin-bottom: 6px; line-height: 1.6; }
+
+.product-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--steel); }
+.product-header .brand { font-family: var(--font-display); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+.product-header h1 { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.5; }
+thead th { text-align: left; font-weight: 700; padding: 10px 14px; border-bottom: 2px solid var(--steel); white-space: nowrap; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--code-bg); }
+
+blockquote { border-left: 3px solid var(--quote-border); background: var(--quote-bg); padding: 16px 20px; margin: 0 0 20px; border-radius: 0 4px 4px 0; font-size: 0.92rem; }
+blockquote p:last-child { margin-bottom: 0; }
+
+td[contenteditable="true"] { outline: none; min-width: 100px; transition: background 0.15s; }
+td[contenteditable="true"]:hover { background: var(--code-bg); }
+td[contenteditable="true"]:focus { background: var(--quote-bg); box-shadow: inset 0 0 0 2px var(--steel); }
+td[contenteditable="true"].placeholder { color: var(--text-muted); font-style: italic; }
+
+textarea.field { width: 100%; min-height: 80px; padding: 12px 16px; font-family: var(--font-body); font-size: 0.92rem; line-height: 1.6; color: var(--text); background: var(--paper); border: 1px solid var(--border); border-radius: 4px; resize: vertical; margin: 8px 0 20px; outline: none; }
+textarea.field:focus { border-color: var(--steel); box-shadow: 0 0 0 2px rgba(61,90,128,0.15); }
+textarea.field::placeholder { color: var(--text-muted); font-style: italic; }
+
+.checklist { list-style: none; padding-left: 0; margin: 0 0 16px; }
+.checklist li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+.checklist input[type="checkbox"] { margin-top: 4px; accent-color: var(--check-color); flex-shrink: 0; }
+
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--code-bg); padding: 2px 6px; border-radius: 3px; }
+pre { background: var(--code-bg); padding: 16px 20px; border-radius: 4px; overflow-x: auto; margin: 0 0 20px; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.6; }
+
+.toolbar { position: sticky; top: 0; z-index: 50; background: var(--ground); border-bottom: 1px solid var(--border); padding: 10px 0; margin: -48px -28px 32px; padding: 10px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.toolbar-left { display: flex; align-items: center; gap: 12px; }
+.toolbar-right { display: flex; align-items: center; gap: 12px; }
+.toolbar button { font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; padding: 7px 16px; border-radius: 4px; border: 1px solid var(--border); background: var(--paper); color: var(--text); cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+.toolbar button:hover { background: var(--code-bg); border-color: var(--steel); }
+.toolbar button.primary { background: var(--steel); color: #fff; border-color: var(--steel); }
+.toolbar button.primary:hover { background: var(--coral); border-color: var(--coral); }
+#save-indicator { font-size: 0.78rem; color: var(--text-muted); opacity: 0; transition: opacity 0.3s; }
+#save-indicator.visible { opacity: 1; }
+
+.product-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+
+@media print {
+  body { background: #fff; color: #000; max-width: none; padding: 0; }
+  .toolbar { display: none; }
+  h2 { border-bottom-color: #ccc; }
+  thead th { border-bottom-color: #000; }
+  tbody td { border-bottom-color: #ddd; }
+  td[contenteditable="true"]:empty::after { content: ""; }
+  textarea.field { border-color: #ccc; }
+  .product-header { border-bottom-color: #000; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 24px 16px 48px; }
+  .toolbar { margin: -24px -16px 24px; padding: 10px 16px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  table { font-size: 0.82rem; }
+  thead th, tbody td { padding: 8px 10px; }
+}
+  </style>
+</head>
+<body>
+
+  <div class="toolbar" id="toolbar">
+    <div class="toolbar-left">
+      <span id="save-indicator"></span>
+    </div>
+    <div class="toolbar-right">
+      <button id="btn-clear">Clear All</button>
+      <button id="btn-print" class="primary">Save / Print PDF</button>
+    </div>
+  </div>
+
+  <div class="product-header">
+    <div class="brand">Governoble.online</div>
+    <h1>SOP Builder Kit</h1>
+  </div>
+
+  <h2>Client Onboarding SOP</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:35%">Field</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Version</strong></td><td contenteditable="true" data-placeholder="1.0"></td></tr>
+        <tr><td><strong>Effective Date</strong></td><td contenteditable="true" data-placeholder="Enter date"></td></tr>
+        <tr><td><strong>Last Reviewed</strong></td><td contenteditable="true" data-placeholder="Enter date"></td></tr>
+        <tr><td><strong>Owner</strong></td><td contenteditable="true" data-placeholder="Name / Role"></td></tr>
+        <tr><td><strong>Approval</strong></td><td contenteditable="true" data-placeholder="Approver Name / Role"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>1. Purpose</h2>
+
+  <p>Ensure every new client has a consistent, professional onboarding experience — from signed contract to first deliverable — so nothing falls through the cracks and the client feels confident they made the right choice.</p>
+
+  <hr>
+
+  <h2>2. Scope</h2>
+
+  <ul>
+    <li><strong>Applies to:</strong> All new client engagements</li>
+    <li><strong>Triggers:</strong> Signed contract or accepted proposal</li>
+    <li><strong>Does NOT cover:</strong> Pre-sales, proposals, or ongoing account management</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. Roles &amp; Responsibilities</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Responsibility</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Account Owner</strong></td><td>Primary client relationship, oversees onboarding</td></tr>
+        <tr><td><strong>Operations / Admin</strong></td><td>Sets up systems, sends welcome materials</td></tr>
+        <tr><td><strong>Delivery Lead</strong></td><td>Plans first deliverable, runs kickoff</td></tr>
+        <tr><td><strong>Finance</strong></td><td>Sends invoice, confirms payment setup</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>4. Onboarding Timeline</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Milestone</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Day 0</strong></td><td>Contract signed — trigger onboarding</td></tr>
+        <tr><td><strong>Day 0-1</strong></td><td>Welcome email + intake form sent</td></tr>
+        <tr><td><strong>Day 1-2</strong></td><td>Internal setup (project, channels, folders)</td></tr>
+        <tr><td><strong>Day 3-5</strong></td><td>Intake form received, reviewed</td></tr>
+        <tr><td><strong>Day 5-7</strong></td><td>Kickoff call scheduled and held</td></tr>
+        <tr><td><strong>Day 7-10</strong></td><td>First deliverable or milestone started</td></tr>
+        <tr><td><strong>Day 14</strong></td><td>Check-in call — "How's it going?"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>5. Procedure</h2>
+
+  <h3>Phase 1: Welcome (Day 0-1)</h3>
+
+  <p><strong>Who:</strong> Account Owner + Operations</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Send <strong>Welcome Email</strong> within 24 hours of signed contract</label></li>
+  </ul>
+  <ul style="margin: 0 0 8px; padding-left: 44px; font-size: 0.95rem;">
+    <li>Thank them for choosing you</li>
+    <li>Introduce their main point of contact</li>
+    <li>Attach or link the <strong>Client Intake Form</strong></li>
+    <li>Set expectation for kickoff call timing</li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Send <strong>intake form</strong> (see template below)</label></li>
+    <li><input type="checkbox"><label>Add client to your CRM / project management tool</label></li>
+    <li><input type="checkbox"><label>Create client folder in shared drive</label></li>
+  </ul>
+
+  <h4>Welcome Email Template:</h4>
+  <blockquote>
+    <p><strong>Subject:</strong> Welcome to [Your Company] — Let's Get Started</p>
+    <p>Hi [Client Name],</p>
+    <p>We're excited to work with you! Here's what happens next:</p>
+    <p>1. <strong>Fill out the intake form</strong> (linked below) — takes about 10 minutes<br>
+    2. <strong>We'll schedule a kickoff call</strong> within the next 5 business days<br>
+    3. <strong>You'll meet your delivery team</strong> and we'll align on priorities</p>
+    <p>Intake Form: [Link]</p>
+    <p>Your main point of contact is [Name] ([email]). Don't hesitate to reach out with any questions.</p>
+    <p>Looking forward to getting started!</p>
+  </blockquote>
+
+  <hr>
+
+  <h3>Phase 2: Internal Setup (Day 1-2)</h3>
+
+  <p><strong>Who:</strong> Operations</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Create project in project management tool (Notion, Asana, Monday, etc.)</label></li>
+    <li><input type="checkbox"><label>Set up communication channel (Slack channel, Teams group, or email thread)</label></li>
+    <li><input type="checkbox"><label>Create shared folder structure:</label></li>
+  </ul>
+
+  <pre>[Client Name]/
+├── 01-Contract &amp; Agreements/
+├── 02-Intake &amp; Discovery/
+├── 03-Deliverables/
+├── 04-Communications/
+└── 05-Invoices &amp; Billing/</pre>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Add client to billing/invoicing system</label></li>
+    <li><input type="checkbox"><label>Send first invoice (if applicable)</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Phase 3: Discovery &amp; Intake Review (Day 3-5)</h3>
+
+  <p><strong>Who:</strong> Account Owner + Delivery Lead</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Review completed intake form</label></li>
+    <li><input type="checkbox"><label>Note any gaps or follow-up questions</label></li>
+    <li><input type="checkbox"><label>Research client's business (website, social media, competitors)</label></li>
+    <li><input type="checkbox"><label>Prepare kickoff agenda (see template below)</label></li>
+    <li><input type="checkbox"><label>Schedule kickoff call — send calendar invite with agenda attached</label></li>
+  </ul>
+
+  <h4>Intake Form — Key Questions:</h4>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Questions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Business Basics</strong></td><td>Company name, industry, size, website</td></tr>
+        <tr><td><strong>Goals</strong></td><td>What does success look like in 30/60/90 days?</td></tr>
+        <tr><td><strong>Pain Points</strong></td><td>What's not working right now? What prompted this engagement?</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Who are the decision-makers? Who will we work with day-to-day?</td></tr>
+        <tr><td><strong>Preferences</strong></td><td>Communication preference (email/Slack/calls)? Meeting frequency?</td></tr>
+        <tr><td><strong>Access &amp; Logins</strong></td><td>What systems/tools do we need access to?</td></tr>
+        <tr><td><strong>Past Experience</strong></td><td>Have you worked with a company like ours before? What went well/poorly?</td></tr>
+        <tr><td><strong>Budget &amp; Timeline</strong></td><td>Any hard deadlines or budget constraints beyond the contract?</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h3>Phase 4: Kickoff Call (Day 5-7)</h3>
+
+  <p><strong>Who:</strong> Account Owner + Delivery Lead + Client</p>
+
+  <h4>Kickoff Agenda (45-60 min):</h4>
+
+  <ol>
+    <li><strong>(5 min)</strong> Introductions — who's who on both sides</li>
+    <li><strong>(10 min)</strong> Confirm goals and success metrics</li>
+    <li><strong>(10 min)</strong> Review intake form answers — fill in gaps</li>
+    <li><strong>(10 min)</strong> Walk through the project plan / first 30 days</li>
+    <li><strong>(5 min)</strong> Communication norms — how and when we talk</li>
+    <li><strong>(5 min)</strong> Tools &amp; access — confirm everything is set up</li>
+    <li><strong>(5 min)</strong> Q&amp;A and next steps</li>
+  </ol>
+
+  <h4>After the kickoff:</h4>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Send kickoff summary email within 24 hours</label></li>
+    <li><input type="checkbox"><label>Include: confirmed goals, agreed timeline, next steps, action items</label></li>
+    <li><input type="checkbox"><label>Update project plan based on any changes from the call</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Phase 5: First Deliverable (Day 7-10)</h3>
+
+  <p><strong>Who:</strong> Delivery Lead</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Begin work on first deliverable or milestone</label></li>
+    <li><input type="checkbox"><label>Share progress update with client midway</label></li>
+    <li><input type="checkbox"><label>Deliver first output with context (not just a file — explain what they're looking at)</label></li>
+    <li><input type="checkbox"><label>Ask for initial feedback</label></li>
+  </ul>
+
+  <hr>
+
+  <h3>Phase 6: Check-In (Day 14)</h3>
+
+  <p><strong>Who:</strong> Account Owner</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Schedule a 15-minute check-in call</label></li>
+    <li><input type="checkbox"><label>Ask:</label></li>
+  </ul>
+  <ul style="margin: 0 0 8px; padding-left: 44px; font-size: 0.95rem;">
+    <li>"How are you feeling about things so far?"</li>
+    <li>"Is communication working well for you?"</li>
+    <li>"Anything we should adjust?"</li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Document feedback internally</label></li>
+    <li><input type="checkbox"><label>Adjust process if needed</label></li>
+    <li><input type="checkbox"><label>Transition to ongoing account management rhythm</label></li>
+  </ul>
+
+  <hr>
+
+  <h2>6. Red Flags to Watch For</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Red Flag</th><th>Response</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Client hasn't returned intake form after 3 days</td><td>Send a friendly follow-up; offer to do it over a call instead</td></tr>
+        <tr><td>Stakeholder conflict or unclear decision-maker</td><td>Address directly in kickoff — "Who has final say on X?"</td></tr>
+        <tr><td>Scope creep in kickoff</td><td>Note it, don't agree on the spot — "Let's add that to the roadmap"</td></tr>
+        <tr><td>Client is unresponsive after kickoff</td><td>Escalate to Account Owner for a direct outreach</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>7. Tools Needed</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td contenteditable="true" data-placeholder="CRM (HubSpot, Notion, etc.)">CRM (HubSpot, Notion, etc.)</td><td>Track client record</td></tr>
+        <tr><td contenteditable="true" data-placeholder="Project management (Notion, Asana, etc.)">Project management (Notion, Asana, etc.)</td><td>Track tasks and deliverables</td></tr>
+        <tr><td contenteditable="true" data-placeholder="Communication (Slack, email)">Communication (Slack, email)</td><td>Day-to-day client comms</td></tr>
+        <tr><td contenteditable="true" data-placeholder="Shared drive (Google Drive, Dropbox)">Shared drive (Google Drive, Dropbox)</td><td>File storage and sharing</td></tr>
+        <tr><td contenteditable="true" data-placeholder="Calendar (Google Cal, Outlook)">Calendar (Google Cal, Outlook)</td><td>Scheduling kickoff and check-ins</td></tr>
+        <tr><td contenteditable="true" data-placeholder="Invoicing (QuickBooks, Stripe, etc.)">Invoicing (QuickBooks, Stripe, etc.)</td><td>Billing setup</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>8. Quality Checkpoints</h2>
+
+  <ul class="checklist">
+    <li><input type="checkbox"><label>Client received welcome email within 24 hours</label></li>
+    <li><input type="checkbox"><label>All internal systems set up before kickoff</label></li>
+    <li><input type="checkbox"><label>Kickoff call held within 7 days of contract signing</label></li>
+    <li><input type="checkbox"><label>First deliverable shipped within 10 days</label></li>
+    <li><input type="checkbox"><label>Check-in call completed at Day 14</label></li>
+    <li><input type="checkbox"><label>Client confirmed satisfaction (verbal or written)</label></li>
+  </ul>
+
+  <hr>
+
+  <h2>9. Revision History</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td contenteditable="true" data-placeholder="1.0"></td><td contenteditable="true" data-placeholder="Date"></td><td contenteditable="true" data-placeholder="Name"></td><td contenteditable="true" data-placeholder="Initial version"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="product-footer">
+    &copy; 2026 Governoble. All rights reserved.
+  </div>
+
+  <script>
+// Governoble Interactive Template Engine
+(function() {
+  var STORAGE_KEY = 'governoble_' + document.title.replace(/[^a-z0-9]/gi, '_');
+
+  function saveState() {
+    var state = {};
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (!el.classList.contains('placeholder') && el.textContent.trim()) {
+        state['edit_' + i] = el.innerHTML;
+      }
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) {
+      state['check_' + i] = el.checked;
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) {
+      state['radio_' + i] = el.checked;
+    });
+    document.querySelectorAll('textarea').forEach(function(el, i) {
+      state['textarea_' + i] = el.value;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSaveIndicator();
+    } catch(e) {}
+  }
+
+  function restoreState() {
+    var stored;
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+    if (!stored) return;
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el, i) {
+      if (stored['edit_' + i]) {
+        el.innerHTML = stored['edit_' + i];
+        el.classList.remove('placeholder');
+      }
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el, i) {
+      if (stored['check_' + i] !== undefined) el.checked = stored['check_' + i];
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(function(el, i) {
+      if (stored['radio_' + i] !== undefined) el.checked = stored['radio_' + i];
+    });
+    document.querySelectorAll('textarea').forEach(function(el, i) {
+      if (stored['textarea_' + i]) el.value = stored['textarea_' + i];
+    });
+  }
+
+  function showSaveIndicator() {
+    var el = document.getElementById('save-indicator');
+    if (!el) return;
+    el.textContent = 'Saved';
+    el.classList.add('visible');
+    setTimeout(function() { el.classList.remove('visible'); }, 1500);
+  }
+
+  var saveTimeout;
+  function debouncedSave() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(saveState, 800);
+  }
+
+  function setupPlaceholders() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+      var ph = el.getAttribute('data-placeholder');
+      if (!ph) return;
+      if (!el.textContent.trim()) {
+        el.textContent = ph;
+        el.classList.add('placeholder');
+      }
+      el.addEventListener('focus', function() {
+        if (el.classList.contains('placeholder')) {
+          el.textContent = '';
+          el.classList.remove('placeholder');
+        }
+      });
+      el.addEventListener('blur', function() {
+        if (!el.textContent.trim()) {
+          el.textContent = ph;
+          el.classList.add('placeholder');
+        }
+      });
+    });
+  }
+
+  function setupToolbar() {
+    document.getElementById('btn-print').addEventListener('click', function() { window.print(); });
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      if (!confirm('Clear all entries and start fresh? This cannot be undone.')) return;
+      document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+        el.innerHTML = '';
+        var ph = el.getAttribute('data-placeholder');
+        if (ph) { el.textContent = ph; el.classList.add('placeholder'); }
+      });
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(function(el) { el.checked = false; });
+      document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+    });
+  }
+
+  function init() {
+    setupPlaceholders();
+    setupToolbar();
+    restoreState();
+    document.addEventListener('input', function(e) {
+      if (e.target.matches('[contenteditable], textarea')) debouncedSave();
+    });
+    document.addEventListener('change', function(e) {
+      if (e.target.matches('input[type="checkbox"], input[type="radio"]')) debouncedSave();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>
